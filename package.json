@@ -36,6 +36,7 @@
     "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "postcss": "^8.5.5",
+    "postcss-safe-parser": "^7.0.1",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
