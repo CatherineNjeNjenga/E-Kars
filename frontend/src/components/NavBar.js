@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import "../css/NavBar.css";
 
@@ -8,7 +8,7 @@ import { searchFilter } from "../redux/actions/searchAction";
 
 const NavBar = ({ click }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -23,7 +23,7 @@ const NavBar = ({ click }) => {
 
   const logoutHandler = () => {
     localStorage.removeItem("authToken");
-    history.push("/login");
+    history("/login");
     history.go(0);
   };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Checkbox from "../components/Checkbox";
 import CheckboxYear from "../components/CheckboxYear";
 import "../css/Sidebar.css";
@@ -21,7 +21,7 @@ const Sidebar = () => {
   const { carBrands, carYears } = carElements;
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     dispatch(searchCheckboxes(searchCheckbox));

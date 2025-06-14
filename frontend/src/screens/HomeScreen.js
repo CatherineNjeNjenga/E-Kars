@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import FeaturedImage from "../images/white_tesla.png";
 import Featured from "../components/Featured";
 import Services from "../components/Services";

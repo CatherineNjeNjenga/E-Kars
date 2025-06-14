@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router";
 import aos from "aos";
 import "aos/dist/aos.css";
 import "./css/App.css";
@@ -41,25 +41,25 @@ const App = () => {
         <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
         <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
         <BrandsNavBar />
-        <Switch>
-          <Route exact path="/" component={HomeScreen} />
-          <Route exact path="/cart" component={CartScreen} />
-          <Route exact path="/products" component={ProductsScreen} />
-          <Route exact path="/product/:id" component={ProductDetailsScreen} />
-          <Route exact path="/login" component={LoginScreen} />
-          <Route exact path="/register" component={RegisterScreen} />
+        <Routes>
+          <Route exact path="/" element={<HomeScreen/> } />
+          <Route exact path="/cart" element={<CartScreen/> } />
+          <Route exact path="/products/" element={<ProductsScreen/> } />
+          <Route exact path="/product/:id" element={<ProductDetailsScreen/> } />
+          <Route exact path="/login" element={<LoginScreen/> } />
+          <Route exact path="/register" element={<RegisterScreen/> } />
           <Route
             exact
             path="/forgotpassword"
-            component={ForgotPasswordScreen}
+            element={<ForgotPasswordScreen/> }
           />
           <Route
             exact
             path="/passwordreset/:resetToken"
-            component={ResetPasswordScreen}
+            element={<ResetPasswordScreen/> }
           />
-          <Route exact path="/checkout" component={CheckoutScreen} />
-        </Switch>
+          <Route exact path="/checkout" element={<CheckoutScreen/> } />
+        </Routes>
       </Router>
     </div>
   );

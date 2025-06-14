@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import CheckoutItem from "../components/CheckoutItem";
 import StripeForm from "../components/StripeForm";
@@ -61,7 +61,7 @@ const CheckoutScreen = () => {
         </div>
         <div className="checkout__products">
           {cartItems.length === 0 ? (
-            <Redirect to="/products" />
+            <Navigate to="/products" />
           ) : (
             cartItems.map((item) => {
               return (

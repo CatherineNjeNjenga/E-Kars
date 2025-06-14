@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import "../css/LoginScreen.css";
 
 const LoginScreen = ({ history }) => {
-  const usehistory = useHistory();
+  const usehistory = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      history.push("/");
+      history("/");
     }
   }, [history]);
 
@@ -33,7 +33,7 @@ const LoginScreen = ({ history }) => {
 
       localStorage.setItem("authToken", data.token);
 
-      history.push("/products");
+      history("/products");
       usehistory.go(0);
     } catch (error) {
       setError(error.response.data.error);

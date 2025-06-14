@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import "../css/ProductDetailsScreen.css";
 
 // ACTIONS
 import { getProductDetails } from "../redux/actions/productActions";
 import { addToCart } from "../redux/actions/cartActions";
 
+
 const ProductDetailsScreen = ({ match }) => {
+  const {id} = useParams();
   const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
 
@@ -20,10 +22,10 @@ const ProductDetailsScreen = ({ match }) => {
   };
 
   useEffect(() => {
-    if (product && match.params.id !== product._id) {
-      dispatch(getProductDetails(match.params.id));
+    if (product && id !== product._id) {
+      dispatch(getProductDetails(id));
     }
-  }, [dispatch, match.params.id, product]);
+  }, [dispatch, id, product]);
 
   return (
     <div className="productscreen">

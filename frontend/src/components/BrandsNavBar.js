@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { searchBrand } from "../redux/actions/searchAction";
 import "../css/Brands.css";
 
 const BrandsNavBar = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
   const [searchClicked, setSearchClicked] = useState("");
   const carElements = useSelector((state) => state.carElements);
   const { carBrands } = carElements;
@@ -27,7 +27,7 @@ const BrandsNavBar = () => {
               key={index}
               onClick={(e) => {
                 setSearchClicked(brand.toLowerCase());
-                history.push("/products");
+                history("/products");
                 e.stopPropagation();
               }}
             >
@@ -37,8 +37,8 @@ const BrandsNavBar = () => {
         })}
         <li
           onClick={() => {
-            history.push("/products");
-            history.go(0);
+            history("/products");
+            window.history.go(0);
           }}
         >
           All Cars
