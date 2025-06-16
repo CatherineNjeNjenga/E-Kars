@@ -4,8 +4,8 @@
   "description": "Used electric cars",
   "main": "index.js",
   "engines": {
-    "node": "12.18.3",
-    "npm": "6.14.8"
+    "node": "20.17.0",
+    "npm": "11.4.2"
   },
   "scripts": {
     "start": "node backend/index.js && export NODE_OPTIONS=--openssl-legacy-provider",
