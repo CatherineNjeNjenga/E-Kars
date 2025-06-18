@@ -1,7 +1,7 @@
 {
   "name": "e-kars",
   "version": "0.1.0",
-  "type": "module",
+  "type": "module.mjs",
   "proxy": "http://127.0.0.1:5000",
   "private": true,
   "dependencies": {
