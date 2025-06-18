@@ -16,8 +16,6 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/private", require("./routes/privateRoutes"));
 app.use("/api/stripe", require("./routes/paymentRoutes"));
 app.use(errorHandler);
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
 // const __dirname = path.resolve()
