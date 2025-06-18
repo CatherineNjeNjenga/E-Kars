@@ -1,6 +1,7 @@
 {
   "name": "e-kars",
   "version": "1.0.0",
+  "proxy": "https://e-kars.onrender.com/",
   "description": "Used electric cars",
   "main": "index.js",
    "type": "module",
