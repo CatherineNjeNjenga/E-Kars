@@ -2,7 +2,6 @@
   "name": "e-kars",
   "version": "0.1.0",
   "type": "module",
-  "proxy": "http://127.0.0.1:5000",
   "private": true,
   "dependencies": {
     "@agney/react-loading": "^0.1.2",
