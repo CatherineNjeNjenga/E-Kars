@@ -18,17 +18,12 @@ app.use("/api/stripe", require("./routes/paymentRoutes"));
 app.use(errorHandler);
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
-const resolvedDirectory = path.resolve()
-
-// if (process.env.NODE_ENV === "production") {
-//   // app.use(express.static(path.join(__dirname, 'frontend/build')))
-//   app.use(express.static(path.join(resolvedDirectory, '/frontend/build')))
-//   // app.use(express.static("frontend/build"));
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(resolvedDirectory, 'frontend', 'build', 'index.html'))
-//     // res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"));
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
