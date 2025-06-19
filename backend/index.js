@@ -16,13 +16,13 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/private", require("./routes/privateRoutes"));
 app.use("/api/stripe", require("./routes/paymentRoutes"));
 app.use(errorHandler);
-app.use(express.static(path.join(__dirname, "..", "frontend" ,"build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, '/frontend/build')))
+  // app.use(express.static(path.join(__dirname, '/frontend/build')))
   
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
   });
 }
 
