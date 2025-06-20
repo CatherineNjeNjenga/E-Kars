@@ -11,6 +11,10 @@ const sendToken = (user, statusCode, res) => {
 
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
+  const message = `
+      <h1>You have successfully registered your E-Kars account.</h1>
+      <p>Thank you for joining the E-Kars family.</p>
+      <p>Happy shopping!</p>`;
 
   try {
     const user = await User.create({
@@ -18,17 +22,12 @@ exports.register = async (req, res, next) => {
       email,
       password,
     });
+    if (!user) {
+      return next(new ErrorResponse("Email could not be sent"), 404);
+    }
     sendToken(user, 201, res);
-  } catch (error) {
-    next(error);
-  }
-
-  const message = `
-      <h1>You have successfully registered your E-Kars account.</h1>
-      <p>Thank you for joining the E-Kars family.</p>
-      <p>Happy shopping!</p>`;
-  // Sending the email
-  
+    
+    // Sending the email
     try {
       await sendEmail({
         to: user.email,
@@ -39,12 +38,16 @@ exports.register = async (req, res, next) => {
       res.status(200).json({ success: true, data: "Email Sent" });
     } catch (error) {
       console.log(error);
-      // user.resetPasswordToken = undefined;
-      // user.resetPasswordExpire = undefined;
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
 
       await user.save();
       return next(new ErrorResponse("Email could not be sent", 500));
     }
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
 
 exports.login = async (req, res, next) => {
