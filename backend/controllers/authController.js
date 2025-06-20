@@ -35,13 +35,9 @@ exports.register = async (req, res, next) => {
         text: message,
       });
 
-      res.status(200).json({ success: true, data: "Email Sent" });
+      // res.status(200).json({ success: true, data: "Email Sent" });
     } catch (error) {
       console.log(error);
-      user.resetPasswordToken = undefined;
-      user.resetPasswordExpire = undefined;
-
-      await user.save();
       return next(new ErrorResponse("Email could not be sent", 500));
     }
   } catch (error) {
