@@ -36,6 +36,7 @@
     "nodemon": "^2.0.6",
     "redux-devtools-extension": "^2.13.8",
     "sendgrid-mail": "0.0.3",
-    "stripe": "^8.131.1"
+    "stripe": "^8.131.1",
+    "nodemailer-brevo-transport": "2.2.0"
   }
 }
