@@ -22,6 +22,31 @@ exports.register = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+
+  const message = `
+      <h1>You have successfully registered your E-Kars account.</h1>
+      <p>Thank you for joining the E-Kars family.</p>
+      <p>Happy shopping!</p>
+      <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+    `;
+  // Sending the email
+  
+    try {
+      await sendEmail({
+        to: user.email,
+        subject: "Account Registration Successful",
+        text: message,
+      });
+
+      res.status(200).json({ success: true, data: "Email Sent" });
+    } catch (error) {
+      console.log(error);
+      // user.resetPasswordToken = undefined;
+      // user.resetPasswordExpire = undefined;
+
+      await user.save();
+      return next(new ErrorResponse("Email could not be sent", 500));
+    }
 };
 
 exports.login = async (req, res, next) => {
