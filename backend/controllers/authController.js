@@ -26,9 +26,7 @@ exports.register = async (req, res, next) => {
   const message = `
       <h1>You have successfully registered your E-Kars account.</h1>
       <p>Thank you for joining the E-Kars family.</p>
-      <p>Happy shopping!</p>
-      <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
-    `;
+      <p>Happy shopping!</p>`;
   // Sending the email
   
     try {
